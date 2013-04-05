@@ -1,0 +1,24 @@
+<!DOCTYPE html> 
+<html>
+<head>
+<title>{{ username }} Party's</title>
+</head>
+<body>
+<h1>Festes organitzades per: {{ username }}</h1>
+{% if festes %}
+<ul>
+{% for festa in festes %}
+<li>
+	<p><h3>{{festa.titol}}</h3></p>
+	<p>{{ festa.descripcio}}</p> 
+	<p>Data: {{ festa.data }}</p>
+	<img src="../../media/{{ festa.imatge }}">
+</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>No Party</p>
+{% endif %}
+<p><a href="../../">INICI</a></p>
+</body>
+</html>

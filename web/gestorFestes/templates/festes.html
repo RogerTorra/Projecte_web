@@ -1,0 +1,36 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>{{ titlehead }}</title>
+	<style type="text/css" rel="stylesheet">
+  	{% include 'static/css/style.css' %}
+	</style>
+</head>
+<body>
+	<div class="structBody">
+		<nav>
+			<a href="../">Index</a>
+			<a href="#">Festes</a>
+			<a href="../ciutats">Ciutats</a>
+		</nav>
+		<section>
+			<h1>{{ pagetitle }}</h1>
+			<p>{{ contentbody }}</p>
+			{% if festes %}
+			<ul>
+			{% for festa in festes %}
+			<li>
+				<p><h3>{{festa.titol}}</h3></p>
+				<p>{{ festa.descripcio}}</p> 
+				<p>Data: {{ festa.data }}</p>
+				<img src="../../media/{{ festa.imatge }}">
+			</li>
+			{% endfor %}
+			</ul>
+			{% else %}
+			<p>No Party</p>
+			{% endif %}
+		</section>
+	</div>
+</body>
+</html>

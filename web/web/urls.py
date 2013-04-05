@@ -5,11 +5,12 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-from isobres.views import *
+#from isobres.views import *
+from gestorFestes.views import *
 
 urlpatterns = patterns('',
     # Examples:
-    url(r'^$', mainpage, name='home'),
+    url(r'^$', index, name='Inici'),
     # url(r'^web/', include('web.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
@@ -17,8 +18,15 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
 	url(r'^admin/', include(admin.site.urls)),
+    url(r'^festes/', festes),
+    url(r'^ciutats/', ciutats),
+    url(r'^user/(\w+)/$', userpage),
+	url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
 
-	#url(r'^media/(?P.*)$','django.views.static.serve',
-	#	{'document_root':settings.MEDIA_ROOT,}
-	#),
 )
+
+if settings.DEBUG and settings.STATIC_ROOT:
+    urlpatterns += patterns('',
+        (r'%s(?P<path>.*)$' % settings.STATIC_URL.lstrip('/'), 
+            'django.views.static.serve',
+            {'document_root' : settings.STATIC_ROOT }),)

@@ -1,0 +1,33 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<title>{{ titlehead }}</title>
+	<style type="text/css" rel="stylesheet">
+  		{% include 'static/css/style.css' %}
+	</style>
+</head>
+<body>
+	<div class="structBody">
+	<nav>
+		<a href="../">Index</a>
+		<a href="../festes">Festes</a>
+		<a href="#">Ciutats</a>
+	</nav>
+	<section>
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+		{% if ciutats %}
+		<ul>
+		{% for ciutat in ciutats %}
+		<li>
+			<p><h3>{{ciutat.nom}}</h3></p>
+			<p>{{ ciutat.provincia}} CP: {{ ciutat.cp }}</p>
+		</li>
+		{% endfor %}
+		</ul>
+		{% else %}
+		{% endif %}
+	</section>
+	</div>
+</body>
+</html>
