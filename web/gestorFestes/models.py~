@@ -27,5 +27,3 @@ class Festa(models.Model):
 	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge')
 	data = models.DateTimeField()
 	local = models.ForeignKey(Local)
-        def __unicode__(self):
-		return self.titol
