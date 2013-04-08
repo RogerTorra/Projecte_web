@@ -1,24 +1,5 @@
-<!DOCTYPE html> 
-<html>
-<head>
-	<title>Gestor de Festes</title>
-	<style type="text/css" rel="stylesheet">
-  	{% include 'static/css/style.css' %}
-	</style>
-</head>
-<body>
-	<div class="structBody">
-		<nav>
-			<ul>
-				<li><a href=""><span>Index</span></a></li>
-				<li><a href="/festes"><span>Festes</span></a></li>
-				<li><a href="/ciutats"><span>Ciutats</span></a></li>
-			</ul>
-		</nav>
-		<section>
-			<h1>{{ pagetitle }}</h1>
-			<p>{{ contentbody }}</p>
-		</section>
-	</div>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{ pagetitle }}</h1>
+	<p>{{ contentbody }}</p>
+{% endblock %}
