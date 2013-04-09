@@ -5,13 +5,16 @@
 	{% if festes %}
 	<ul>
 		{% for festa in festes %}
-		<li>
-		<p><h3>{{festa.titol}}</h3></p>
+		<li><a href="http://www.w3schools.com">Visit W3Schools</a> 
+		<p><a href="/festes/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
+<!-- 	
 		<p>{{ festa.descripcio}}</p> 
 		<p>{{ festa.local.nom}}</p>
 		<p>Data: {{ festa.data }}</p>
 		<img src="../../media/{{ festa.imatge }}">
+-->		
 		</li>
+
 		{% endfor %}
 	</ul>
 	{% else %}
