@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^festes/$', festes),
 	url(r'^festes/(?P<idFesta>\w+)', festa_info), 
     url(r'^ciutats/$', ciutats),
+	url(r'^login/$',login),
+	url(r'^login/control$', controlLogin),
     url(r'^user/(\w+)/$', userpage),
 	url(r'^media/(?P<path>.*)$','django.views.static.serve',{'document_root':settings.MEDIA_ROOT,}),
 
