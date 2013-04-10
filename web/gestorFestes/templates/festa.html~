@@ -2,9 +2,8 @@
 {% block content %}
 	<h1>{{ pagetitle }}</h1>
 	<p>{{ contentbody }}</p>
-	{% if festes %}
+	{% if festa %}
 	<ul>
-		{% for festa in festes %}
 		<li>
 		<p><h3>{{festa.titol}}</h3></p>
 		<p>{{ festa.descripcio}}</p> 
@@ -12,8 +11,8 @@
 		<p>Data: {{ festa.data }}</p>
 		<img src="../../media/{{ festa.imatge }}">
 		</li>
-		{% endfor %}
 	</ul>
+	<p><a href="/festes">INICI</a></p>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}
