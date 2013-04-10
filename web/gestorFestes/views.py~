@@ -32,12 +32,23 @@ def festa_info(request,idFesta):
 	return render(request,"festa.html",variables)
 
 def index(request): 
-	variables = Context({
+	
+	if(request.user.is_authenticated()):
+		variables = Context({
         'titlehead': 'Gestor de Festes',
 		'pagetitle': 'Gestor de Festes',
 		'contentbody': "Informant de tota la festa d'arreu desde 2013",
-	})
-
+		'nomUsuari' : request.user.username,
+		})
+		
+	else:
+		variables = Context({
+        'titlehead': 'Gestor de Festes',
+		'pagetitle': 'Gestor de Festes',
+		'contentbody': "Informant de tota la festa d'arreu desde 2013",
+		})
+	
+	
 	return render(request,"index.html",variables)
 
 def userpage(request, username):
