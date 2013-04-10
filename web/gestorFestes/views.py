@@ -5,7 +5,7 @@ from django.template.loader import get_template
 from django.contrib.auth.models import User
 from gestorFestes.models import Festa,Ciutat,Local
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 
 def festes(request): 
 	try:
@@ -71,10 +71,16 @@ def controlLogin (request):
 				})
 	else:
 		variables = Context({
-				'validacio' : "OK",
+				'validacio' : "FAIL",
 		})
 	
 	return render(request,"login.html",variables)
+
+
+
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
 
 
 def userpage(request, username):
