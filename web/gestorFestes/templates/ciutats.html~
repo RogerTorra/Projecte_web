@@ -7,6 +7,7 @@
 		{% for ciutat in ciutats %}
 		<li>
 			<p><h3><a href="/ciutats/{{ciutat.id}}"> {{ciutat.nom}}</h3></a></p>
+			<p><a href="/localsCiutat/{{ciutat.id}}"> veure locals</a><p>
 		</li>
 		{% endfor %}
 		</ul>
