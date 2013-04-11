@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{ pagetitle }}</h1>
+	<p>{{ contentbody }}</p>
+	{% if local %}
+	<ul>
+		<li>
+		<p><h3>{{ local.nom }}</h3></p>
+		<p>Descripcio: {{ local.descripcio }}</p>		
+		<p>Telefon: {{ local.telf }}</p>
+		<p>Email: {{ local.email }}</p>
+		<p>Ciutat: {{ local.ciutat }}</p>
+		<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
+		<p></p>  
+		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
+		</li>
+	</ul>
+	<p><a href="/locals">TORNA A LA LLISTA</a></p>
+	{% else %}
+	<p>No Party</p>
+	{% endif %}
+{% endblock %}

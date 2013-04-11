@@ -2,11 +2,11 @@
 {% block content %}
 	<h1>{{ pagetitle }}</h1>
 	<p>{{ contentbody }}</p>
-	{% if festes %}
+	{% if locals %}
 	<ul>
 		{% for local in locals %}
 		<li>
-		<p><a href="/festes/{{local.id}}"<h3>{{local.titol}}</h3></a></p>
+		<p><a href="/festes/{{local.id}}"<h3>{{local.nom}}</h3></a></p>
 <!-- 	
 		<p>{{ festa.descripcio}}</p> 
 		<p>{{ festa.local.nom}}</p>

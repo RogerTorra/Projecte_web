@@ -98,6 +98,21 @@ def locals_view(request):
 
 	return render(request,"locals.html",variables)
 
+def locals_info(request,idLocal): 
+	try:
+		local = Local.objects.get(pk=idLocal)
+	except Exception:
+		raise Http404('Ciutats not found.')
+	
+	variables = Context({
+		'local': local,	
+        'titlehead': 'Gestor de Festes',
+		'pagetitle': local.nom,
+	})
+
+	return render(request,"local.html",variables)
+
+
 def festa_info_json(request,idFesta):
 	try:
 		data = Festa.objects.get(pk=idFesta)
