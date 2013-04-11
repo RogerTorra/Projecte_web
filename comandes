@@ -5,6 +5,8 @@ automaticament detecta la ruta a la carpeta i la crear al fer el commit i push.
 
 git add . -> (desde l'arrel del projecte) Agregar tots els fitxers modificats o creats del projecte al commit
 
+git add * Afegeix tots els canvis realitzats a la espera per commitejar.
+
 git add nomFitxer -> agregar un fitxer creat o modificat en concret al commit
 
 git commit -m "comentari" -> crear commit amb el comentari
@@ -12,3 +14,5 @@ git commit -m "comentari" -> crear commit amb el comentari
 git push -> pujar els commits al github
 
 git commit -a: Añadimos todos los ficheros modificados directamente al commit, sin ejecutar un git add prévio.
+
+git pull Actualitza el projecte amb la ultima versió del servidor GIT.

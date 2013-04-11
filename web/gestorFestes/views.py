@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from gestorFestes.models import Festa,Ciutat,Local
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
 
 def festes(request): 
 	try:
@@ -50,33 +51,6 @@ def obtenirUsuari(request):
 		return request.user.username
 	else:
 		return "Anonim"
-
-
-def login(request):
-
-	return render(request,"login.html")
-
-
-def controlLogin (request):
-	# NO SE COM FER ARRIBR PER POST EL USERNAME I PASSWORD
-	username = request.POST['username']
-	password = request.POST['password']
-	user = authenticate(username=username,password=password)
-	if(user is not None):
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				variables = Context({
-					'validacio' : "OK",
-				})
-	else:
-		variables = Context({
-				'validacio' : "FAIL",
-		})
-	
-	return render(request,"login.html",variables)
-
-
 
 def logout_view(request):
     logout(request)
