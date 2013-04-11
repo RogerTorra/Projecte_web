@@ -84,3 +84,19 @@ def ciutats(request):
 
 	return render(request,"ciutats.html",variables)
 
+def festa_info_json(request,idFesta):
+	try:
+		data = Festa.objects.get(pk=idFesta)
+		from django.core import serializers
+		festa = serializers.serialize("json", data)
+
+	except:
+		raise Http404('Festa not found')
+	#self.response.out.write(simplejson.dumps(festa))
+	#variables = Context({
+	#	'festa': festa,	
+    #    'titlehead': 'Nom de la festa',
+	#	'pagetitle': 'Nom de la festa',
+	#})
+	#return render(request,"festa.html",variables)
+

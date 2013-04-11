@@ -5,7 +5,8 @@ from django.template.loader import get_template
 from django.contrib.auth.models import User
 from gestorFestes.models import Festa,Ciutat,Local
 from django.shortcuts import render
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
+from django.views.decorators.csrf import csrf_protect
 
 def festes(request): 
 	try:
@@ -51,30 +52,9 @@ def obtenirUsuari(request):
 	else:
 		return "Anonim"
 
-
-def login(request):
-
-	return render(request,"login.html")
-
-
-def controlLogin (request):
-	# NO SE COM FER ARRIBR PER POST EL USERNAME I PASSWORD
-	username = request.POST['username']
-	password = request.POST['password']
-	user = authenticate(username=username,password=password)
-	if(user is not None):
-		if user is not None:
-			if user.is_active:
-				login(request, user)
-				variables = Context({
-					'validacio' : "OK",
-				})
-	else:
-		variables = Context({
-				'validacio' : "OK",
-		})
-	
-	return render(request,"login.html",variables)
+def logout_view(request):
+    logout(request)
+    # Redirect to a success page.
 
 
 def userpage(request, username):
@@ -103,4 +83,20 @@ def ciutats(request):
 	})
 
 	return render(request,"ciutats.html",variables)
+
+def festa_info_json(request,idFesta):
+	try:
+		data = Festa.objects.get(pk=idFesta)
+		from django.core import serializers
+		festa = serializers.serialize("json", data)
+
+	except:
+		raise Http404('Festa not found')
+	#self.response.out.write(simplejson.dumps(festa))
+	variables = Context({
+		'festa': simplejson.dumps(festa),	
+        'titlehead': 'Nom de la festa',
+		'pagetitle': 'Nom de la festa',
+	})
+	return render(request,"festa.html",variables)
 

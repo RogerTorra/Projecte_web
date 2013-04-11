@@ -5,8 +5,8 @@
 	{% if festes %}
 	<ul>
 		{% for festa in festes %}
-		<li><a href="http://www.w3schools.com">Visit W3Schools</a> 
-		<p><a href="/festes/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
+		<li>
+		<p><a href="/festes/{{festa.pk}}"<h3>{{festa.titol}}</h3></a></p>
 <!-- 	
 		<p>{{ festa.descripcio}}</p> 
 		<p>{{ festa.local.nom}}</p>

@@ -5,14 +5,17 @@
 	{% if festa %}
 	<ul>
 		<li>
+<!--		<p><h3>{{festa[pk]}}</h3></p>
+
 		<p><h3>{{festa.titol}}</h3></p>
 		<p>{{ festa.descripcio}}</p> 
 		<p>{{ festa.local.nom}}</p>
 		<p>Data: {{ festa.data }}</p>
+-->
 		<img src="../../media/{{ festa.imatge }}">
 		</li>
 	</ul>
-	<p><a href="/festes">INICI</a></p>
+	<p><a href="/festes">TORNA A LA LLISTA</a></p>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}
