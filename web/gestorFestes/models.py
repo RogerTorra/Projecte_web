@@ -30,6 +30,6 @@ class Festa(models.Model):
 	def __unicode__(self):
 		return self.titol
 
-#class LocalFesta(models.Model):
-#	local = models.ForeignKey(Local)
-#	festa = models.ForeignKey(Festa)
+class LocalFesta(models.Model):
+	local = models.ForeignKey(Local)
+	festa = models.ForeignKey(Festa)

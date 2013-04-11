@@ -98,6 +98,20 @@ def ciutats(request):
 
 	return render(request,"ciutats.html",variables)
 
+def ciutat_info(request,idCiutat):
+	try:
+		ciutat = Ciutat.objects.get(pk=idCiutat)
+	except Exception:
+		raise Http404('Ciutat not found.')
+	
+	variables = Context({
+		'ciutat': ciutat,	
+        'titlehead': 'Gestor de Festes',
+		'pagetitle': ciutat.nom,
+	})
+
+	return render(request,"ciutat.html",variables)
+
 def locals_view(request): 
 	try:
 		locals_obj = Local.objects.all()
@@ -127,6 +141,23 @@ def locals_info(request,idLocal):
 	})
 
 	return render(request,"local.html",variables)
+
+def locals_ciutat(request,idCiutat): 
+	try:
+		local = Local.objects.filter(ciutat=idCiutat)
+		ciutat = Ciutat.objects.get(pk=idCiutat)
+	except Exception:
+		raise Http404('Ciutats not found.')
+	
+	variables = Context({
+		'local': local,	
+        'titlehead': 'Gestor de Festes',
+		'pagetitle': 'Locals de '+ciutat.nom,
+		'locals' : local,
+	})
+
+	return render(request,"locals.html",variables)
+
 
 def festes_local(request,idLocal):
 	try:
