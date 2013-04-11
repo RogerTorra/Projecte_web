@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-	<div class="pageTitle"><h1>{{ pagetitle }}</h1></div>
-	<p>{{ contentbody }}</p>
+	<div class="pagetitle">
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
 	{% if festes %}
 	<ul>
 		{% for festa in festes %}

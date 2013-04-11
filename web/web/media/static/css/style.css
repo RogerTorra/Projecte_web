@@ -1,0 +1,200 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain) */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+/*Gestor de Festes Syle*/
+/*Autor: Roger Torra*/
+/*License: Creative Commons */
+@font-face {
+  font-family: dimitri2;
+  src: url("../fonts/dimitri2.ttf");
+  /* TTF file for CSS3 browsers */ }
+
+@font-face {
+  font-family: dimitri;
+  src: url("../fonts/dimitri.ttf");
+  /* TTF file for CSS3 browsers */ }
+
+html, body {
+  width: 100%;
+  height: 100%; }
+
+body {
+  background-image: url("../images/back.png"); }
+
+.structBody {
+  width: 80%;
+  height: 100%;
+  margin: auto;
+  padding-top: 25px; }
+
+nav {
+  width: 660px;
+  height: 50px;
+  margin: auto;
+  margin-bottom: 25px; }
+  nav .fancyNav {
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -moz-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6);
+    -webkit-box-shadow: 0 0 4px rgba(255, 255, 255, 0.6); }
+    nav .fancyNav li {
+      background-color: #f0f0f0;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#fefefe), color-stop(0.5, #f0f0f0), color-stop(0.51, #e6e6e6));
+      background-image: -moz-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+      background-image: -o-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+      background-image: -ms-linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+      background-image: linear-gradient(#fefefe 0%, #f0f0f0 50%, #e6e6e6 51%);
+      border-right: 1px solid rgba(9, 9, 9, 0.125);
+      box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+      -moz-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+      -webkit-box-shadow: 1px -1px 0 rgba(255, 255, 255, 0.6) inset;
+      position: relative;
+      float: left;
+      list-style: none; }
+      nav .fancyNav li a {
+        color: black;
+        display: inline-block;
+        font: 20px/1 dimitri;
+        padding: 12px 35px 14px;
+        position: relative;
+        text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.6);
+        z-index: 2;
+        text-decoration: none !important;
+        white-space: nowrap; }
+    nav .fancyNav li:after {
+      content: '.';
+      text-indent: -9999px;
+      overflow: hidden;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0;
+      background-image: -webkit-gradient(linear, left top, right top, from(rgba(168, 168, 168, 0.5)), color-stop(0.5, rgba(168, 168, 168, 0)), to(rgba(168, 168, 168, 0.5)));
+      background-image: -moz-linear-gradient(left, rgba(168, 168, 168, 0.5), rgba(168, 168, 168, 0) 50%, rgba(168, 168, 168, 0.5));
+      background-image: -o-linear-gradient(left, rgba(168, 168, 168, 0.5), rgba(168, 168, 168, 0) 50%, rgba(168, 168, 168, 0.5));
+      background-image: -ms-linear-gradient(left, rgba(168, 168, 168, 0.5), rgba(168, 168, 168, 0) 50%, rgba(168, 168, 168, 0.5));
+      background-image: linear-gradient(left, rgba(168, 168, 168, 0.5), rgba(168, 168, 168, 0) 50%, rgba(168, 168, 168, 0.5));
+      box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+      -moz-box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+      -webkit-box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff,1px 0 0 #a3a3a3,2px 0 0 #fff;
+      -moz-transition: 0.25s all;
+      -webkit-transition: 0.25s all;
+      -o-transition: 0.25s all;
+      transition: 0.25s all; }
+    nav .fancyNav li:first-child {
+      border-radius: 4px 0 0 4px; }
+    nav .fancyNav li:first-child:after, nav .fancyNav li.selected:first-child:after {
+      box-shadow: 1px 0 0 #a3a3a3,2px 0 0 #fff;
+      -moz-box-shadow: 1px 0 0 #a3a3a3,2px 0 0 #fff;
+      -webkit-box-shadow: 1px 0 0 #a3a3a3,2px 0 0 #fff;
+      border-radius: 4px 0 0 4px; }
+    nav .fancyNav li:last-child {
+      border-radius: 0 4px 4px 0; }
+    nav .fancyNav li:last-child:after, nav .fancyNav li.selected:last-child:after {
+      box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff;
+      -moz-box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff;
+      -webkit-box-shadow: -1px 0 0 #a3a3a3,-2px 0 0 #fff;
+      border-radius: 0 4px 4px 0; }
+    nav .fancyNav li:hover:after, nav .fancyNav li.selected:after, nav .fancyNav li:target:after {
+      opacity: 1; }
+    nav .fancyNav li.selected:hover:after, nav .fancyNav li:target:hover:after {
+      opacity: 1 !important; }
+  nav .fancyNav:hover li.selected:after, nav li:target:after {
+    opacity: 0; }
+
+section {
+  color: white;
+  background: black;
+  height: 75%;
+  -webkit-border-radius: 15px;
+  border-radius: 15px;
+  padding: 10px;
+  background-image: url("../images/bar.png");
+  background-repeat: repeat-x; }
+  section h1 {
+    font-size: 18px;
+    text-align: left; }
+  section ul li {
+    margin-top: 15px; }
+  section .pagetitle {
+    height: 15%;
+    margin-top: 15px;
+    text-align: center; }
+    section .pagetitle p {
+      text-align: center; }
+    section .pagetitle h1, section .pagetitle h2, section .pagetitle h3 {
+      font-family: dimitri2;
+      color: white;
+      text-align: center; }
+    section .pagetitle h1 {
+      font-size: 60px; }
+    section .pagetitle h2 {
+      font-size: 35px; }
+  section .indexLogo {
+    height: 80%;
+    width: 100%; }
+    section .indexLogo .handLeft, section .indexLogo .handRight {
+      height: 100%;
+      width: 50%; }
+    section .indexLogo .handLeft {
+      float: left;
+      background-image: url("../images/hand.png");
+      background-repeat: no-repeat;
+      background-repeat: no-repeat;
+      background-size: 100%; }
+    section .indexLogo .handRight {
+      -moz-transform: scaleX(-1);
+      /* Firefox */
+      -o-transform: scaleX(-1);
+      /* Opera */
+      -webkit-transform: scaleX(-1);
+      /* Chrome y Safari */
+      transform: scaleX(-1);
+      /* w3org */
+      filter: FlipH;
+      /* Internet Explorer */
+      float: right;
+      background-image: url("../images/hand.png");
+      background-repeat: no-repeat;
+      background-size: 100%; }

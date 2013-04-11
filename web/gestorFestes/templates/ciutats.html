@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
+	<div class="pagetitle">
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
+	</div>
 		{% if ciutats %}
 		<ul>
 		{% for ciutat in ciutats %}
