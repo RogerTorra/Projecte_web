@@ -7,7 +7,7 @@ class Ciutat(models.Model):
 	nom = models.CharField(max_length=25, unique=True)
 	provincia = models.CharField(max_length=25)
 	cp = models.IntegerField(verbose_name='Codi Postal')
-        def __unicode__(self):
+	def __unicode__(self):
 		return self.nom
 
 class Local(models.Model):
@@ -27,3 +27,5 @@ class Festa(models.Model):
 	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge')
 	data = models.DateTimeField()
 	local = models.ForeignKey(Local)
+	def __unicode__(self):
+		return self.titol

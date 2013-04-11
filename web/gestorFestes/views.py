@@ -30,6 +30,20 @@ def festa_info(request,idFesta):
 		'festa': festa,	
         'titlehead': 'Nom de la festa',
 		'pagetitle': 'Nom de la festa',
+		'prevLocal' : False,
+	})
+	return render(request,"festa.html",variables)
+
+def festaLocal_info(request,idFesta):
+	try:
+		festa = Festa.objects.get(pk=idFesta)
+	except:
+		raise Http404('Festa not found')
+	variables = Context({
+		'festa': festa,	
+        'titlehead': 'Nom de la festa',
+		'pagetitle': 'Nom de la festa',
+		'prevLocal' : True,
 	})
 	return render(request,"festa.html",variables)
 
@@ -101,6 +115,7 @@ def locals_view(request):
 def locals_info(request,idLocal): 
 	try:
 		local = Local.objects.get(pk=idLocal)
+		festes = Festa.objects.filter(local=idLocal)
 	except Exception:
 		raise Http404('Ciutats not found.')
 	
@@ -108,9 +123,26 @@ def locals_info(request,idLocal):
 		'local': local,	
         'titlehead': 'Gestor de Festes',
 		'pagetitle': local.nom,
+		'festes' : festes,
 	})
 
 	return render(request,"local.html",variables)
+
+def festes_local(request,idLocal):
+	try:
+		local = Local.objects.get(pk=idLocal)
+		festes = Festa.objects.filter(local=idLocal)
+	except Exception:
+		raise Http404('Ciutats not found.')
+	
+	variables = Context({	
+        'titlehead': 'Gestor de Festes',
+		'pagetitle': 'Festes del Local: '+local.nom,
+		'festes' : festes,
+	})
+
+	return render(request,"festesLocal.html",variables)
+
 
 
 def festa_info_json(request,idFesta):

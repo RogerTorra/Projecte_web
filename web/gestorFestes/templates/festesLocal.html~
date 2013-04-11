@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block content %}
+	<h1>{{ pagetitle }}</h1>
+	<p>{{ contentbody }}</p>
+	{% if festes %}
+	<ul>
+
+		{% for festa in festes %}
+		<li>
+		<p><a href="/festesLocal/festa/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
+
+		</li>
+		{% endfor %}
+	</ul>
+	
+	{% else %}
+	<p>No Party</p>
+	{% endif %}
+	<p><a href="/locals/{{idLocal}}">TORNA A LA LLISTA</a></p>
+{% endblock %}

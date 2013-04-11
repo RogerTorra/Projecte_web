@@ -2,18 +2,26 @@
 {% block content %}
 	<h1>{{ pagetitle }}</h1>
 	<p>{{ contentbody }}</p>
+
 	{% if festa %}
-	<ul>
-		<li>
-		<p><h3>{{festa.titol}}</h3></p>
-		<p>{{ festa.descripcio}}</p> 
-		<p>{{ festa.local.nom}}</p>
-		<p>Data: {{ festa.data }}</p>
-		<img src="../../media/{{ festa.imatge }}">
-		</li>
-	</ul>
-	<p><a href="/festes">TORNA A LA LLISTA</a></p>
+		<ul>
+			<li>
+			<p><h3>{{festa.titol}}</h3></p>
+			<p>{{ festa.descripcio}}</p> 
+			<p>{{ festa.local.nom}}</p>
+			<p>Data: {{ festa.data }}</p>
+			<img src="../../media/{{ festa.imatge }}">
+			</li>
+		</ul>
+		{% if prevLocal %}
+			<p><a href="/festesLocal/{{ festa.local.id }}">TORNA A LA LLISTA</a></p>
+		{% else %}
+			<p><a href="/festes">TORNA A LA LLISTA</a></p>
+		{% endif %}
+		
 	{% else %}
 	<p>No Party</p>
 	{% endif %}
+
+	
 {% endblock %}

@@ -10,9 +10,13 @@
 		<p>Email: {{ local.email }}</p>
 		<p>Ciutat: {{ local.ciutat }}</p>
 		<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
-		<p></p>  
+		<p><a href="/festesLocal/{{local.id}}">Veure festes</a></p>
+			</ul>  
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>
+
+		
+
 	</ul>
 	<p><a href="/locals">TORNA A LA LLISTA</a></p>
 	{% else %}
