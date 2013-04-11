@@ -16,7 +16,7 @@
 				{% if user.username %}
 				<li>{{ user.username }}</li>
 				<li><a id="opener" href="/logout"><span>Logout</span></a></li>
-					{% else %}
+				{% else %}
 				<li><a id="opener" href="/login"><span>Login</span></a></li>
 				{% endif %}
 			</ul>
