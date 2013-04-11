@@ -10,9 +10,15 @@
 	<div class="structBody">
 		<nav>
 			<ul>
-				<li><a href=""><span>Index</span></a></li>
+				<li><a href="/"><span>Index</span></a></li>
 				<li><a href="/festes"><span>Festes</span></a></li>
 				<li><a href="/ciutats"><span>Ciutats</span></a></li>
+				{% if user.username %}
+				<li>{{ user.username }}</li>
+				<li><a id="opener" href="/logout"><span>Logout</span></a></li>
+					{% else %}
+				<li><a id="opener" href="/login"><span>Login</span></a></li>
+				{% endif %}
 			</ul>
 		</nav>
 		<section>
