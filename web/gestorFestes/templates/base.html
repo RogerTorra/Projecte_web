@@ -3,6 +3,13 @@
 <head>
 	<title>Gestor de Festes</title>
 	<link rel="stylesheet" type="text/css" href="../media/static/css/style.css">
+	<SCRIPT TYPE="text/javascript">
+		$(document).ready(function(){
+			$('#button').click(function(){
+				$(this).toggleClass('on');
+			});
+});
+	</SCRIPT>
 </head>
 <body>
 	<div class="structBody">
@@ -12,13 +19,18 @@
 				<li><a href="/festes"><span>Festes</span></a></li>
 				<li><a href="/ciutats"><span>Ciutats</span></a></li>
 				<li><a href="/locals"><span>Locals</span></a></li>
-				{% if user.username %}
-				<li>{{ user.username }}</li>
-				<li><a id="opener" href="/logout"><span>Logout</span></a></li>
-				{% else %}
-				<li><a id="opener" href="/login"><span>Login</span></a></li>
-				{% endif %}
 			</ul>
+			<div class="userButton">
+				{% if user.username %}
+				<a rel="external" href="/logout" id="button" class="on">&#xF011;</a>
+				<span></span>
+				<div>Logout</div>
+				{% else %}
+				<a rel="external" href="/login" id="button">&#xF011;</a>
+				<span></span>
+				<div>Login</div>
+				{% endif %}
+			</div>
 		</nav>
 		<section>
 			{% block content %}{% endblock %}
