@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 	<div class="pagetitle">
 		<h1>{{festa.titol}}</h1>
 		<p>{{ contentbody }}</p>
@@ -14,8 +15,6 @@
 			<img src="../../media/{{ festa.imatge }}">
 			</li>
 		</ul>
-
-		<form><input type="button" value=" Tornar Enrrera " onclick="history.go(-1)" /></form>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}
