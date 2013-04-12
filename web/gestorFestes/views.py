@@ -71,19 +71,6 @@ def logout_view(request):
     # Redirect to a success page.
 
 
-def userpage(request, username):
-	try:
-		user = User.objects.get(username=username)
-	except:
-		raise Http404('User not found.')
-	festes = Festa.objects.all()
-	variables = Context({
-	'username': username,
-	'festes': festes,
-	})
-	
-	return render(request, "userpage.html", variables)
-
 def ciutats(request): 
 	try:
 		ciutats = Ciutat.objects.all()
@@ -168,8 +155,9 @@ def festes_local(request,idLocal):
 	
 	variables = Context({	
         'titlehead': 'Gestor de Festes',
-		'pagetitle': 'Festes del Local: '+local.nom,
+		'pagetitle': local.nom,
 		'festes' : festes,
+		'local' : idLocal,
 	})
 
 	return render(request,"festesLocal.html",variables)

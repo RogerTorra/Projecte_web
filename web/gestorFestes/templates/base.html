@@ -1,15 +1,9 @@
+{%load staticfiles%}
 <!DOCTYPE html> 
 <html>
 <head>
 	<title>Gestor de Festes</title>
-	<link rel="stylesheet" type="text/css" href="../media/static/css/style.css">
-	<SCRIPT TYPE="text/javascript">
-		$(document).ready(function(){
-			$('#button').click(function(){
-				$(this).toggleClass('on');
-			});
-});
-	</SCRIPT>
+	<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}">
 </head>
 <body>
 	<div class="structBody">
@@ -19,6 +13,11 @@
 				<li><a href="/festes"><span>Festes</span></a></li>
 				<li><a href="/ciutats"><span>Ciutats</span></a></li>
 				<li><a href="/locals"><span>Locals</span></a></li>
+				{% if user.username %}
+				<li><a href="/admin"><span>Admin</span></a></li>
+				{% else %}
+				<li><a href="/login"><span>Admin</span></a></li>
+				{% endif %}
 			</ul>
 			<div class="userButton">
 				{% if user.username %}
