@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>{{ pagetitle }}</h1>
-	<p>{{ contentbody }}</p>
+	<div class="pagetitle">
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
 	{% if locals %}
-	<ul>
+	<ul class="messy">
 		{% for local in locals %}
 		<li>
-		<p><a href="/festes/{{local.id}}"<h3>{{local.nom}}</h3></a></p>
+		<p><a href="/locals/{{local.id}}"<h3>{{local.nom}}</h3></a></p>
 <!-- 	
 		<p>{{ festa.descripcio}}</p> 
 		<p>{{ festa.local.nom}}</p>

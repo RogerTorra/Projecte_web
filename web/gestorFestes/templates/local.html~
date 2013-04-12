@@ -1,7 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>{{ pagetitle }}</h1>
-	<p>{{ contentbody }}</p>
+	<div class="pagetitle">
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
 	{% if local %}
 	<ul>
 		<li>
@@ -10,20 +12,7 @@
 		<p>Email: {{ local.email }}</p>
 		<p>Ciutat: {{ local.ciutat }}</p>
 		<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
-		<p>Festes:</p>
-			<ul>
-				{% for festa in festes %}
-				<li>
-				<p><a href="/festes/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
-		<!-- 	
-				<p>{{ festa.descripcio}}</p> 
-				<p>{{ festa.local.nom}}</p>
-				<p>Data: {{ festa.data }}</p>
-				<img src="../../media/{{ festa.imatge }}">
-		-->		
-				</li>
-				{% endfor %}
-
+		<p><a href="/festesLocal/{{local.id}}">Veure festes</a></p>
 			</ul>  
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>

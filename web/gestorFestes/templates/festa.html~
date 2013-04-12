@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>{{ pagetitle }}</h1>
-	<p>{{ contentbody }}</p>
+	<div class="pagetitle">
+		<h1>{{festa.titol}}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
 
 	{% if festa %}
 		<ul>
 			<li>
-			<p><h3>{{festa.titol}}</h3></p>
 			<p>{{ festa.descripcio}}</p> 
 			<p>{{ festa.local.nom}}</p>
 			<p>Data: {{ festa.data }}</p>
@@ -14,11 +15,13 @@
 			</li>
 		</ul>
 		{% if prevLocal %}
-			<p><a href="/festesLocals/{{ festa.local.id }}">TORNA A LA LLISTA</a></p>
+			<p><!--a href="/festesLocal/{{ festa.local.id }}">TORNA A LA LLISTA</a-->
+				<a href="../{{ festa.local.id }}">TORNA A LA LLISTA</a>
+			</p>
 		{% else %}
 			<p><a href="/festes">TORNA A LA LLISTA</a></p>
 		{% endif %}
-		
+		<form><input type="button" value=" Tornar Enrrera " onclick="history.go(-1)" /></form>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

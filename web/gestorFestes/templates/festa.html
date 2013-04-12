@@ -14,13 +14,8 @@
 			<img src="../../media/{{ festa.imatge }}">
 			</li>
 		</ul>
-		{% if prevLocal %}
-			<p><!--a href="/festesLocal/{{ festa.local.id }}">TORNA A LA LLISTA</a-->
-				<a href="../{{ festa.local.id }}">TORNA A LA LLISTA</a>
-			</p>
-		{% else %}
-			<p><a href="/festes">TORNA A LA LLISTA</a></p>
-		{% endif %}
+
+		<form><input type="button" value=" Tornar Enrrera " onclick="history.go(-1)" /></form>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

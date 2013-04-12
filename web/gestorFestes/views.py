@@ -30,22 +30,9 @@ def festa_info(request,idFesta):
 		'festa': festa,	
         'titlehead': 'Nom de la festa',
 		'pagetitle': 'Nom de la festa',
-		'prevLocal' : False,
 	})
 	return render(request,"festa.html",variables)
 
-def festaLocal_info(request,idFesta):
-	try:
-		festa = Festa.objects.get(pk=idFesta)
-	except:
-		raise Http404('Festa not found')
-	variables = Context({
-		'festa': festa,	
-        'titlehead': 'Nom de la festa',
-		'pagetitle': 'Nom de la festa',
-		'prevLocal' : True,
-	})
-	return render(request,"festa.html",variables)
 
 def index(request): 
 	

@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+	<div class="pagetitle">
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
+	{% if ciutat %}
+		<ul>
+			<li>	
+				<p>Provincia: {{ ciutat.provincia }}</p>
+				<p>Codi Postal: {{ ciutat.cp }}</p>
+			</li>
+		</ul>
+		<p><a href="/ciutats">TORNA A LA LLISTA</a></p>
+	{% else %}
+		<p>No Ciutat</p>
+	{% endif %}
+{% endblock %}
