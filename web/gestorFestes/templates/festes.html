@@ -5,18 +5,11 @@
 		<p>{{ contentbody }}</p>
 	</div>
 	{% if festes %}
-	<ul>
+	<ul class="messy">
 		{% for festa in festes %}
 		<li>
 		<p><a href="/festes/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
-<!-- 	
-		<p>{{ festa.descripcio}}</p> 
-		<p>{{ festa.local.nom}}</p>
-		<p>Data: {{ festa.data }}</p>
-		<img src="../../media/{{ festa.imatge }}">
--->		
 		</li>
-
 		{% endfor %}
 	</ul>
 	{% else %}
