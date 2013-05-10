@@ -5,11 +5,13 @@
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
+
 		{% if ciutats %}
+		<a href="/ciutats/create">afegir ciutat</a>
 		<ul class="messy">
 		{% for ciutat in ciutats %}
 		<li>
-			<p><h3><a href="/ciutats/{{ciutat.id}}"> {{ciutat.nom}}</h3></a></p>
+			<p><h3><a href="/ciutats/{{ciutat.id}}"> {{ciutat.nom}}</a></h3></p>
 		</li>
 		{% endfor %}
 		</ul>

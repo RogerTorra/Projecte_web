@@ -167,3 +167,16 @@ def festa_info_json(request,idFesta):
 	#})
 	#return render(request,"festa.html",variables)
 
+#Forms
+from forms import CiutatForm
+from  django.views.generic.edit import CreateView
+
+class CiutatCreate(CreateView):
+	model = Ciutat
+	template_name = 'form.html'
+	form_class = CiutatForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(CiutatCreate,self).form_valid(form)
+
+        

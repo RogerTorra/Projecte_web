@@ -1,8 +1,8 @@
 #encoding:utf-8
 from django.db import models
+#from django.core.urlresolvers import reverse
 
 # Create your models here.
-
 class Ciutat(models.Model):
 	nom = models.CharField(max_length=25, unique=True)
 	provincia = models.CharField(max_length=25)
@@ -33,3 +33,4 @@ class Festa(models.Model):
 class LocalFesta(models.Model):
 	local = models.ForeignKey(Local)
 	festa = models.ForeignKey(Festa)
+

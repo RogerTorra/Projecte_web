@@ -7,6 +7,8 @@ admin.autodiscover()
 
 #from isobres.views import *
 from gestorFestes.views import *
+#FORMS
+from gestorFestes.forms import CiutatForm 
 
 urlpatterns = patterns('',
     # Examples:
@@ -23,6 +25,8 @@ urlpatterns = patterns('',
 	url(r'^festes/(?P<idFesta>\w+)', festa_info),
 	url(r'^festesLocal/festa/(?P<idFesta>\w+)',festa_info),
 	url(r'^festesLocal/(?P<idLocal>\w+)',festes_local),
+     #Create city
+    url(r'^ciutats/create',CiutatCreate.as_view(),name='ciutat_create'),
     url(r'^ciutats/$', ciutats),
 	url(r'^ciutats/(?P<idCiutat>\w+)', ciutat_info),
     url(r'^locals/(?P<idLocal>\w+)',locals_info),
