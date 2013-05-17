@@ -1,6 +1,6 @@
 #encoding:utf-8
 from django.db import models
-#from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse
 
 # Create your models here.
 class Ciutat(models.Model):
@@ -9,7 +9,8 @@ class Ciutat(models.Model):
 	cp = models.IntegerField(verbose_name='Codi Postal')
 	def __unicode__(self):
 		return self.nom
-
+	def get_absolute_url(self):
+		return reverse('ciutat_detail', kwargs={'idCiutat': self.id})
 class Local(models.Model):
 	nom = models.CharField(max_length=25, unique=True)
 	descripcio = models.TextField(max_length=200)

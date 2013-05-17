@@ -178,5 +178,3 @@ class CiutatCreate(CreateView):
 	def form_valid(self,form):
 		form.instance.user = self.request.user
 		return super(CiutatCreate,self).form_valid(form)
-
-        
