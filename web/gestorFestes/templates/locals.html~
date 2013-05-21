@@ -1,20 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 	<div class="pagetitle">
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
+	{% if user.username %}<a href="/locals/create">afegir ciutat</a>{% endif %}
 	{% if locals %}
 	<ul class="messy">
 		{% for local in locals %}
 		<li>
 		<p><a href="/locals/{{local.id}}"<h3>{{local.nom}}</h3></a></p>
-<!-- 	
-		<p>{{ festa.descripcio}}</p> 
-		<p>{{ festa.local.nom}}</p>
-		<p>Data: {{ festa.data }}</p>
-		<img src="../../media/{{ festa.imatge }}">
--->		
 		</li>
 		{% endfor %}
 	</ul>

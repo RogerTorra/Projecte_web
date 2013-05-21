@@ -30,22 +30,9 @@ def festa_info(request,idFesta):
 		'festa': festa,	
         'titlehead': 'Nom de la festa',
 		'pagetitle': 'Nom de la festa',
-		'prevLocal' : False,
 	})
 	return render(request,"festa.html",variables)
 
-def festaLocal_info(request,idFesta):
-	try:
-		festa = Festa.objects.get(pk=idFesta)
-	except:
-		raise Http404('Festa not found')
-	variables = Context({
-		'festa': festa,	
-        'titlehead': 'Nom de la festa',
-		'pagetitle': 'Nom de la festa',
-		'prevLocal' : True,
-	})
-	return render(request,"festa.html",variables)
 
 def index(request): 
 	
@@ -179,4 +166,58 @@ def festa_info_json(request,idFesta):
 	#	'pagetitle': 'Nom de la festa',
 	#})
 	#return render(request,"festa.html",variables)
+
+#Forms
+from forms import CiutatForm, LocalForm, FestaForm
+from  django.views.generic.edit import CreateView,UpdateView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.core.exceptions import PermissionDenied
+
+class LoginRequiredMixin(object):
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+class CheckIsOwnerMixin(object):
+	def get_object(self, *args, **kwargs):
+		obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+		if not obj.user == self.request.user:
+			raise PermissionDenied
+		return obj
+
+class CiutatCreate(LoginRequiredMixin , CreateView):
+	model = Ciutat
+	template_name = 'form.html'
+	form_class = CiutatForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(CiutatCreate,self).form_valid(form)
+
+class LocalCreate(LoginRequiredMixin , CreateView):
+	model = Local
+	template_name = 'form.html'
+	form_class = LocalForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(LocalCreate,self).form_valid(form)
+
+class FestaCreate(LoginRequiredMixin , CreateView):
+	model = Festa
+	template_name = 'form.html'
+	form_class = FestaForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(FestaCreate,self).form_valid(form)
+
+class LocalUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Local
+	template_name = 'form.html'
+	form_class = LocalForm
+
+class CiutatUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Ciutat
+	template_name = 'form.html'
+	form_class = CiutatForm
 

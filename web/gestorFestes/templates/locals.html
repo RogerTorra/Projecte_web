@@ -5,6 +5,7 @@
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
+	{% if user.username %}<a href="/locals/create">afegir local</a>{% endif %}
 	{% if locals %}
 	<ul class="messy">
 		{% for local in locals %}

@@ -5,9 +5,8 @@
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
-
-		{% if ciutats %}
 		{% if user.username %}<a href="/ciutats/create">afegir ciutat</a>{% endif %}
+		{% if ciutats %}	
 		<ul class="messy">
 		{% for ciutat in ciutats %}
 		<li>

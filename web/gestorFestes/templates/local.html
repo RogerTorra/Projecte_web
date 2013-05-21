@@ -5,7 +5,10 @@
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
+		
 	{% if local %}
+
+		{% if user.username and local.user == user  %}<a href="/locals/{{local.id}}/edit">modificar local</a>{% endif %}
 	<ul>
 		<li>
 		<p>Descripcio: {{ local.descripcio }}</p>		

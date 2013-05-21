@@ -1,10 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 	<div class="pagetitle">
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
+		
 	{% if local %}
+
+		{% if user.username and user.username  %}<a href="/locals/{{local.id}}/edit">modificar local</a>{% endif %}
 	<ul>
 		<li>
 		<p>Descripcio: {{ local.descripcio }}</p>		
@@ -12,15 +16,10 @@
 		<p>Email: {{ local.email }}</p>
 		<p>Ciutat: {{ local.ciutat }}</p>
 		<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
-		<p><a href="/festesLocal/{{local.id}}">Veure festes</a></p>
-			</ul>  
+		<p><a class="linkFesta" href="/festesLocal/{{local.id}}"> <i class="icon-thumbs-up"></i> Veure festes</a></p>
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>
-
-		
-
 	</ul>
-	<p><a href="/locals">TORNA A LA LLISTA</a></p>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

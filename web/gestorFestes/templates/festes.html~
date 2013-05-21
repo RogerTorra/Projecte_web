@@ -1,20 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
-	<h1>{{ pagetitle }}</h1>
-	<p>{{ contentbody }}</p>
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+	<div class="pagetitle">
+		<h1>{{ pagetitle }}</h1>
+		<p>{{ contentbody }}</p>
+	</div>
+	{% if user.username %}<a href="/festes/create">afegir ciutat</a>{% endif %}
 	{% if festes %}
-	<ul>
+	<ul class="messy">
 		{% for festa in festes %}
 		<li>
-		<p><a href="/festes/{{festa.pk}}"<h3>{{festa.titol}}</h3></a></p>
-<!-- 	
-		<p>{{ festa.descripcio}}</p> 
-		<p>{{ festa.local.nom}}</p>
-		<p>Data: {{ festa.data }}</p>
-		<img src="../../media/{{ festa.imatge }}">
--->		
+		<p><a href="/festes/{{festa.id}}"<h3>{{festa.titol}}</h3></a></p>
 		</li>
-
 		{% endfor %}
 	</ul>
 	{% else %}

@@ -169,7 +169,7 @@ def festa_info_json(request,idFesta):
 
 #Forms
 from forms import CiutatForm, LocalForm, FestaForm
-from  django.views.generic.edit import CreateView
+from  django.views.generic.edit import CreateView,UpdateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import PermissionDenied
@@ -210,3 +210,19 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 	def form_valid(self,form):
 		form.instance.user = self.request.user
 		return super(FestaCreate,self).form_valid(form)
+
+class LocalUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Local
+	template_name = 'form.html'
+	form_class = LocalForm
+
+class CiutatUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Ciutat
+	template_name = 'form.html'
+	form_class = CiutatForm
+
+class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Festa
+	template_name = 'form.html'
+	form_class = FestaForm
+

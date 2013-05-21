@@ -1,13 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+	<div class="pagetitle">
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
+	</div>
+
 		{% if ciutats %}
-		<ul>
+		{% if user.username %}<a href="/ciutats/create">afegir ciutat</a>{% endif %}
+		<ul class="messy">
 		{% for ciutat in ciutats %}
 		<li>
-			<p><h3><a href="/ciutats/{{ciutat.id}}"> {{ciutat.nom}}</h3></a></p>
-			<p><a href="/localsCiutat/{{ciutat.id}}"> veure locals</a><p>
+			<p><h3><a href="/ciutats/{{ciutat.id}}"> {{ciutat.nom}}</a></h3></p>
 		</li>
 		{% endfor %}
 		</ul>

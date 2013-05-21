@@ -22,18 +22,29 @@ urlpatterns = patterns('',
 	url(r'^/$', index),
 	url(r'^admin/', include(admin.site.urls)),
     #Create Festa
-    url(r'^festes/create', FestaCreate.as_view(),name='festa_create'),
+    url(r'^festes/create$', FestaCreate.as_view(),name='festa_create'),
+	#Modificar Festa
+	url(r'^festa/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='festa_edit'),
     url(r'^festes/$', festes),
-	url(r'^festes/(?P<idFesta>\w+)', festa_info),
+	url(r'^festes/(?P<idFesta>\w+)', festa_info, name='festa_detail'),
 	url(r'^festesLocal/festa/(?P<idFesta>\w+)',festa_info),
 	url(r'^festesLocal/(?P<idLocal>\w+)',festes_local),
      #Create city
-    url(r'^ciutats/create', CiutatCreate.as_view(),name='ciutat_create'),
+    url(r'^ciutats/create$', CiutatCreate.as_view(),name='ciutat_create'),
+	#Modificar ciutat
+	url(r'^ciutats/(?P<pk>\d+)/edit$', CiutatUpdate.as_view(),name='ciutat_edit'),
     url(r'^ciutats/$', ciutats),
-	url(r'^ciutats/(?P<idCiutat>\w+)', ciutat_info,name='ciutat_detail'),
-    #Create Local
-    url(r'^locals/create', LocalCreate.as_view(),name='local_create'),
-    url(r'^locals/(?P<idLocal>\w+)',locals_info),
+	url(r'^ciutats/(?P<idCiutat>\w+)$', ciutat_info,name='ciutat_detail'),
+    
+	
+
+	#Create Local
+    url(r'^locals/create$', LocalCreate.as_view(),name='local_create'),
+	#Modificar Local
+	url(r'^locals/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='local_edit'),
+
+    url(r'^locals/(?P<idLocal>\w+)$',locals_info, name='local_detail'),
+	
 	url(r'^locals/$',locals_view),	
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
