@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
 	url(r'^/$', index),
 	url(r'^admin/', include(admin.site.urls)),
+    #Create Festa
+    url(r'^festes/create', FestaCreate.as_view(),name='festa_create'),
     url(r'^festes/$', festes),
 	url(r'^festes/(?P<idFesta>\w+)', festa_info),
 	url(r'^festesLocal/festa/(?P<idFesta>\w+)',festa_info),
@@ -29,6 +31,8 @@ urlpatterns = patterns('',
     url(r'^ciutats/create', CiutatCreate.as_view(),name='ciutat_create'),
     url(r'^ciutats/$', ciutats),
 	url(r'^ciutats/(?P<idCiutat>\w+)', ciutat_info,name='ciutat_detail'),
+    #Create Local
+    url(r'^locals/create', LocalCreate.as_view(),name='local_create'),
     url(r'^locals/(?P<idLocal>\w+)',locals_info),
 	url(r'^locals/$',locals_view),	
     url(r'^login/$', 'django.contrib.auth.views.login'),

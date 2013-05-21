@@ -364,8 +364,10 @@ section{
   }
   .indexLogo{
     height: 80%;
+    min-height:400px;
     width: 100%;
     .handLeft,.handRight{
+      min-height:400px;
       height:100%;
       width:50%;
     }

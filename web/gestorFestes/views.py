@@ -168,7 +168,7 @@ def festa_info_json(request,idFesta):
 	#return render(request,"festa.html",variables)
 
 #Forms
-from forms import CiutatForm
+from forms import CiutatForm, LocalForm, FestaForm
 from  django.views.generic.edit import CreateView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
@@ -194,6 +194,19 @@ class CiutatCreate(LoginRequiredMixin , CreateView):
 	def form_valid(self,form):
 		form.instance.user = self.request.user
 		return super(CiutatCreate,self).form_valid(form)
-		# if not request.user.is_authenticated():
-		# Do something for authenticated users.
-		#	return super(CiutatCreate,self).form_valid(form)
+
+class LocalCreate(LoginRequiredMixin , CreateView):
+	model = Local
+	template_name = 'form.html'
+	form_class = LocalForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(LocalCreate,self).form_valid(form)
+
+class FestaCreate(LoginRequiredMixin , CreateView):
+	model = Festa
+	template_name = 'form.html'
+	form_class = FestaForm
+	def form_valid(self,form):
+		form.instance.user = self.request.user
+		return super(FestaCreate,self).form_valid(form)
