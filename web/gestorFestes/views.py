@@ -170,11 +170,30 @@ def festa_info_json(request,idFesta):
 #Forms
 from forms import CiutatForm
 from  django.views.generic.edit import CreateView
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
+from django.core.exceptions import PermissionDenied
 
-class CiutatCreate(CreateView):
+class LoginRequiredMixin(object):
+
+	@method_decorator(login_required)
+	def dispatch(self, *args, **kwargs):
+		return super(LoginRequiredMixin, self).dispatch(*args, **kwargs)
+
+class CheckIsOwnerMixin(object):
+	def get_object(self, *args, **kwargs):
+		obj = super(CheckIsOwnerMixin, self).get_object(*args, **kwargs)
+		if not obj.user == self.request.user:
+			raise PermissionDenied
+		return obj
+
+class CiutatCreate(LoginRequiredMixin , CreateView):
 	model = Ciutat
 	template_name = 'form.html'
 	form_class = CiutatForm
 	def form_valid(self,form):
 		form.instance.user = self.request.user
 		return super(CiutatCreate,self).form_valid(form)
+		# if not request.user.is_authenticated():
+		# Do something for authenticated users.
+		#	return super(CiutatCreate,self).form_valid(form)

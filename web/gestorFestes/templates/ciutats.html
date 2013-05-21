@@ -7,7 +7,7 @@
 	</div>
 
 		{% if ciutats %}
-		<a href="/ciutats/create">afegir ciutat</a>
+		{% if user.username %}<a href="/ciutats/create">afegir ciutat</a>{% endif %}
 		<ul class="messy">
 		{% for ciutat in ciutats %}
 		<li>
