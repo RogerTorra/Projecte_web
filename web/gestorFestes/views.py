@@ -169,10 +169,11 @@ def festa_info_json(request,idFesta):
 
 #Forms
 from forms import CiutatForm, LocalForm, FestaForm
-from  django.views.generic.edit import CreateView,UpdateView
+from  django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse_lazy
 
 class LoginRequiredMixin(object):
 
@@ -225,4 +226,10 @@ class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 	model = Festa
 	template_name = 'form.html'
 	form_class = FestaForm
+
+class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
+	model = Local
+	success_url = reverse_lazy('locals/')
+
+
 

@@ -42,10 +42,11 @@ urlpatterns = patterns('',
     url(r'^locals/create$', LocalCreate.as_view(),name='local_create'),
 	#Modificar Local
 	url(r'^locals/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='local_edit'),
-
-    url(r'^locals/(?P<idLocal>\w+)$',locals_info, name='local_detail'),
+	url(r'^locals/(?P<pk>\d+)/delete$', LocalDelete.as_view(),name='local_delete'),
+    url(r'^locals/(?P<idLocal>\w+)/$',locals_info, name='local_detail'),
 	
-	url(r'^locals/$',locals_view),	
+	
+	url(r'^locals/$',locals_view, name='local_list'),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
                     { 'next_page' : '/'}),
