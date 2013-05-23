@@ -230,3 +230,47 @@ class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 	model = Local
 	success_url = reverse_lazy('locals/')
+
+
+### RESTful API views ###
+
+class IsOwnerOrReadOnly(permissions.BasePermission):
+
+    def has_object_permission(self, request, view, obj):
+        # Read permissions are allowed to any request,
+        # so we'll always allow GET, HEAD or OPTIONS requests.
+        if request.method in permissions.SAFE_METHODS:
+            return True
+
+        # Instance must have an attribute named `owner`.
+        return obj.user == request.user
+
+class APILocalList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Local
+    serializer_class = LocalSerializer
+
+class APILocalDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Local
+    serializer_class = LocalSerializer
+
+class APIFestaList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Festa
+    serializer_class = FestaSerializer
+
+class APIFestaDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Festa
+    serializer_class = FestaSerializer
+
+class APILocalReviewList(generics.ListCreateAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Local
+    serializer_class = LocalSerializer
+
+class APILocalDetail(generics.RetrieveUpdateDestroyAPIView):
+    permission_classes = (IsOwnerOrReadOnly,)
+    model = Local
+    serializer_class = LocalSerializer

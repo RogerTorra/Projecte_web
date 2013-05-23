@@ -232,4 +232,40 @@ class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 	success_url = reverse_lazy('locals/')
 
 
+### RESTful API ###
 
+class IsOwnerOrReadOnly(permissions.BasePermission):
+	def has_object_permission(self, request, view, obj):
+		if request.method in permissions.SAFE_METHODS:
+			return True
+	return obj.user == request.user
+
+class APILocalList(generics.ListCreateAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Local
+	serializer_class = LocalSerializer
+
+class APILocalDetail(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Local
+	serializer_class = LocalSerializer
+
+class APIFestaList(generics.ListCreateAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Festa
+	serializer_class = FestaSerializer
+
+class APIFestaDetail(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Festa
+	serializer_class = FestaSerializer
+
+class APILocalReviewList(generics.ListCreateAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Local
+	serializer_class = LocalSerializer
+
+class APILocalDetail(generics.RetrieveUpdateDestroyAPIView):
+	permission_classes = (IsOwnerOrReadOnly,)
+	model = Local
+	serializer_class = LocalSerializer

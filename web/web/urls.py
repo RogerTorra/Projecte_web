@@ -57,12 +57,12 @@ urlpatterns = patterns('',
 
 #RESTful API
 urlpatterns += patterns('',
-    url(r'^api/locals/$', APILocalList.as_view(), name='local-list'),
-    url(r'^api/locals/(?P<pk>\d+)/$', APILocalDetail.as_view(), name='local-detail'),
-    url(r'^api/ciutats/$', APICiutatList.as_view(), name='ciutat-list'),
-    url(r'^api/ciutats/(?P<pk>\d+)/$', APICiutatDetail.as_view(), name='ciutat-detail'),
-    url(r'^api/festes/$', APIFestaList.as_view(), name='festa-list'),
-    url(r'^api/festes/(?P<pk>\d+)/$', APIFestaDetail.as_view(), name='festa-detail'),
+	url(r'^api/locals/$', APILocalList.as_view(), name='local-list'),
+	url(r'^api/locals/(?P<pk>\d+)/$', APILocalDetail.as_view(), name='local-detail'),
+	url(r'^api/ciutats/$', APICiutatList.as_view(), name='ciutat-list'),
+	url(r'^api/ciutats/(?P<pk>\d+)/$', APICiutatDetail.as_view(), name='ciutat-detail'),
+	url(r'^api/festes/$', APIFestaList.as_view(), name='festa-list'),
+	url(r'^api/festes/(?P<pk>\d+)/$', APIFestaDetail.as_view(), name='festa-detail'),
 )
 
 if settings.DEBUG and settings.STATIC_ROOT:
