@@ -8,7 +8,9 @@ admin.autodiscover()
 #from isobres.views import *
 from gestorFestes.views import *
 #FORMS
-from gestorFestes.forms import CiutatForm 
+from gestorFestes.forms import CiutatForm
+from rest_framework.urlpatterns import format_suffix_patterns
+
 
 urlpatterns = patterns('',
     # Examples:

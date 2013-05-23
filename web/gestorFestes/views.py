@@ -234,11 +234,14 @@ class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 
 ### RESTful API ###
 
+from rest_framework import generics, permissions
+from serializers import LocalSerializer, FestaSerializer, CiutatSerializer
+
 class IsOwnerOrReadOnly(permissions.BasePermission):
 	def has_object_permission(self, request, view, obj):
 		if request.method in permissions.SAFE_METHODS:
 			return True
-	return obj.user == request.user
+		return obj.user == request.user
 
 class APILocalList(generics.ListCreateAPIView):
 	permission_classes = (IsOwnerOrReadOnly,)
@@ -260,12 +263,12 @@ class APIFestaDetail(generics.RetrieveUpdateDestroyAPIView):
 	model = Festa
 	serializer_class = FestaSerializer
 
-class APILocalReviewList(generics.ListCreateAPIView):
+class APICiutatList(generics.ListCreateAPIView):
 	permission_classes = (IsOwnerOrReadOnly,)
-	model = Local
-	serializer_class = LocalSerializer
+	model = Ciutat
+	serializer_class = CiutatSerializer
 
-class APILocalDetail(generics.RetrieveUpdateDestroyAPIView):
+class APICiutatDetail(generics.RetrieveUpdateDestroyAPIView):
 	permission_classes = (IsOwnerOrReadOnly,)
-	model = Local
-	serializer_class = LocalSerializer
+	model = Ciutat
+	serializer_class = CiutatSerializer
