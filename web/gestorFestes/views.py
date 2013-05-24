@@ -229,7 +229,7 @@ class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 
 class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 	model = Local
-	success_url = reverse_lazy('locals/')
+	success_url = reverse_lazy('local_list')
 
 
 ### RESTful API ###

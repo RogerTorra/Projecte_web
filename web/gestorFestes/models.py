@@ -36,8 +36,8 @@ signals.post_syncdb.connect(create_testuser,
 
 # Create your models here.
 class Ciutat(models.Model):
-	nom = models.CharField(max_length=25, unique=True)
 	provincia = models.CharField(max_length=25)
+	nom = models.CharField(max_length=25, unique=True, verbose_name="Ciutat")
 	cp = models.IntegerField(verbose_name='Codi Postal')
 	user = models.ForeignKey(User, blank=False)
 	def __unicode__(self):
@@ -62,8 +62,8 @@ class Local(models.Model):
 class Festa(models.Model):
 	titol = models.CharField(max_length=25, unique=True)
 	descripcio = models.TextField(max_length=200)
-	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge')
-	data = models.DateTimeField()
+	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge', null = True)
+	data = models.DateField()
 	local = models.ForeignKey(Local)
 	def __unicode__(self):
 		return self.titol

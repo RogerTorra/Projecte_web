@@ -1,5 +1,16 @@
 {% extends "base.html" %}
+{%load staticfiles%}
 {% block content %}
+<script type="text/javascript">
+	$(function() {
+		$.getJSON("{% static "provincies.json" %}", function(provincies){
+			$("#id_provincia").autocomplete({source: provincies});
+		});
+
+	});
+
+
+</script>
 <div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 	<div class="pagetitle">
 		<p>Afegir Ciutat</p>
