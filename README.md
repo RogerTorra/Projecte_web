@@ -37,4 +37,4 @@ URL's
 
 ----------------
 > Disseny i maquetació realitzat amb [sass] (http://sass-lang.com/).
-> Arxiu css comprimit per obtenir la versió original contactar amb [@RogerTorra] (mailto:elrogertorra@gmail.com)
+> Arxiu css comprimit, per obtenir la versió original contactar amb [@RogerTorra] (mailto:elrogertorra@gmail.com)
