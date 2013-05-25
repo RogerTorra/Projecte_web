@@ -229,6 +229,7 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 	form_class = FestaForm
 
 	def form_valid(self,form):
+#		form = FestaForm(user=self.request.user.username)
 		form.instance.user = self.request.user
 		#form.instance.local = Local.objects.get(user=self.request.user)
 		return super(FestaCreate,self).form_valid(form)

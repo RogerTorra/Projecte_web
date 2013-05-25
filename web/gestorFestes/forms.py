@@ -18,9 +18,23 @@ class LocalForm(ModelForm):
 
 class FestaForm(ModelForm):
 	#data = forms.DateTimeField()
-	# local = forms.ModelChoiceField(queryset=Local.objects.filter(user=1)) ---> com puk saber kin user sok? 
+	#local = forms.ModelChoiceField(queryset=Local.objects.filter(user=1)) 
+
+	#local = forms.ModelChoiceField()
+
+	
+#	def __init__(self, *args, **kwargs):
+#		self.user = kwargs.pop('user', None)
+		#self.validate = kwargs.pop('validate', False)
+#		super(FestaForm, self).__init__(*args, **kwargs)
+		#self.fields['local'].queryset = Local.objects.filter(user=self.user)
+		#user_id = User.objects.get(username = self.user)
+		
+		#self.fields['local'] = forms.ModelChoiceField(queryset=Local.objects.filter(user=user_id.id))
+
 	class Meta:
 		model = Festa
 		exclude = ['user']
-		# exclude = ['user','local']
+		#fields = ['titol', 'descripcio', 'imatge', 'data', 'local', 'user']
+		#exclude = ['user','local']
 
