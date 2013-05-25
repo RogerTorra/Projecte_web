@@ -7,6 +7,15 @@
 		$.getJSON("{% static "provincies.json" %}", function(provincies){
 			$("#id_provincia").autocomplete({source: provincies});
 		});
+		getProvince = function(){
+			value = $("#id_provincia").val();
+			if(value == "Lleida"){return "25"}
+			if(value == "Barcelona"){return "08"}
+			if(value == "Girona"){return "17"}
+			if(value == "Tarragona"){return "43"}
+			if(value == ""){return ""}
+		};
+
 		$("#id_nom").autocomplete({
                 source: function( request, response ) {
                     $.ajax({
@@ -17,7 +26,9 @@
                             maxRows: 10,
                             lang: "es",
                             continentCode: "EU",
-                            countryCode: "ES",
+                            country: "ES",
+                            adminCode1: "56",
+                            adminCode2_startsWith: getProvince(),
                             name_startsWith: request.term
                         },
                         success: function( data ) {
@@ -25,8 +36,7 @@
                                 return {
                                     label: item.name + (item.adminName1 ? ", " + item.adminName1 : "") + ", " + item.countryName,
                                     value: item.name,
-                                    stateOrProvince: item.adminName1,
-                                    countryName: item.countryName
+                                    postalCode: item.postalCode,
                                 }
                             }));
                         }
@@ -35,7 +45,7 @@
                 minLength: 2,
                 select: function( event, ui ) {
                     if (ui.item) {
-                        $("#id_cp").val("");
+                        $("#id_cp").val(ui.item.postalCode);
                     }
                 }
             });
