@@ -13,7 +13,7 @@ class LocalForm(ModelForm):
 		exclude = ['user']
 class FestaForm(ModelForm):
 	#data = forms.DateTimeField()
-
+	imatge = forms.FileField()
 	class Meta:
 		model = Festa
-		
+		exclude = ['imatge']

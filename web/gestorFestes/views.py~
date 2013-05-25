@@ -204,6 +204,20 @@ class LocalCreate(LoginRequiredMixin , CreateView):
 		form.instance.user = self.request.user
 		return super(LocalCreate,self).form_valid(form)
 
+def festa_create(request):
+    
+    if request.method == 'POST':
+        form.form_class = FestaForm(request.POST, request.FILE)
+        if f.form_valid():
+            print "Processing form"
+            print f.cleaned_data['intro_pic']
+            f.form_class.save()
+	form = FestaCreate.as_view()
+    return render_to_response(
+      'form.html',
+      {'form': form },
+      RequestContext(request))
+
 class FestaCreate(LoginRequiredMixin , CreateView):
 	
 	model = Festa

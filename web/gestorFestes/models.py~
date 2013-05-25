@@ -65,7 +65,6 @@ class Festa(models.Model):
 	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge', null = True)
 	data = models.DateField()
 	local = models.ForeignKey(Local)
-	user = models.ForeignKey(User, blank=False)
 	def __unicode__(self):
 		return self.titol
 	def get_absolute_url(self):

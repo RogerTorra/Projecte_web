@@ -24,8 +24,8 @@ urlpatterns = patterns('',
 	url(r'^/$', index),
 	url(r'^admin/', include(admin.site.urls)),
     #Create Festa
-    url(r'^festes/create$', FestaCreate.as_view(),name='festa_create'),
-
+    #url(r'^festes/create$', FestaCreate.as_view(),name='festa_create'),
+	url(r'^festes/create$', festa_create,name='festa_create'),	
 	#Modificar Festa
 	url(r'^festa/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='festa_edit'),
     url(r'^festes/$', festes),
