@@ -23,13 +23,13 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
 	url(r'^/$', index),
 	url(r'^admin/$', include(admin.site.urls)),
-   
+	
 	#Create Festa
-    url(r'^festes/create/$', FestaCreate.as_view(),name='festa_create'),
+	url(r'^festes/create/$', FestaCreate.as_view(),name='festa_create'),
 	#Modificar Festa
 	url(r'^festes/(?P<pk>\d+)/edit/$', LocalUpdate.as_view(),name='festa_edit'),
     
-	url(r'^festes/$', festes, name='festa_list'),
+	url(r'^festes/$', festes, name='festa_lis'),
 	url(r'^festes/(?P<idFesta>\w+)/$', festa_info, name='festa_detail'),
 	url(r'^festes/(?P<pk>\d+)/delete/$', FestaDelete.as_view(),name='festa_delete'),
 	url(r'^festesLocal/festa/(?P<idFesta>\w+)/$',festa_info),
@@ -38,21 +38,21 @@ urlpatterns = patterns('',
     url(r'^ciutats/create$', CiutatCreate.as_view(),name='ciutat_create'),
 	#Modificar ciutat
 	url(r'^ciutats/(?P<pk>\d+)/edit/$', CiutatUpdate.as_view(),name='ciutat_edit'),
-    url(r'^ciutats/$', ciutats, name='ciutat_list'),
+    url(r'^ciutats/$', ciutats, name='ciutat_lis'),
 	url(r'^ciutats/(?P<idCiutat>\w+)/$', ciutat_info,name='ciutat_detail'),
 	url(r'^ciutats/(?P<pk>\d+)/delete/$', CiutatDelete.as_view(),name='ciutat_delete'),
     
 	
 
 	#Create Local
-    url(r'^locals/create$', LocalCreate.as_view(),name='local_create'),
+    url(r'^locals/create/$', LocalCreate.as_view(),name='local_create'),
 	#Modificar Local
-	url(r'^locals/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='local_edit'),
-	url(r'^locals/(?P<pk>\d+)/delete$', LocalDelete.as_view(),name='local_delete'),
+	url(r'^locals/(?P<pk>\d+)/edit/$', LocalUpdate.as_view(),name='local_edit'),
+	url(r'^locals/(?P<pk>\d+)/delete/$', LocalDelete.as_view(),name='local_delete'),
     url(r'^locals/(?P<idLocal>\w+)/$',locals_info, name='local_detail'),
 	
 	
-	url(r'^locals/$',locals_view, name='local_list'),
+	url(r'^locals/$',locals_view, name='local_lis'),
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',
                     { 'next_page' : '/'}),
