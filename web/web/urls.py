@@ -22,22 +22,25 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
 	url(r'^/$', index),
-	url(r'^admin/', include(admin.site.urls)),
-    #Create Festa
-    url(r'^festes/create$', FestaCreate.as_view(),name='festa_create'),
-
+	url(r'^admin/$', include(admin.site.urls)),
+   
+	#Create Festa
+    url(r'^festes/create/$', FestaCreate.as_view(),name='festa_create'),
 	#Modificar Festa
-	url(r'^festa/(?P<pk>\d+)/edit$', LocalUpdate.as_view(),name='festa_edit'),
-    url(r'^festes/$', festes),
-	url(r'^festes/(?P<idFesta>\w+)', festa_info, name='festa_detail'),
-	url(r'^festesLocal/festa/(?P<idFesta>\w+)',festa_info),
-	url(r'^festesLocal/(?P<idLocal>\w+)',festes_local),
+	url(r'^festes/(?P<pk>\d+)/edit/$', LocalUpdate.as_view(),name='festa_edit'),
+    
+	url(r'^festes/$', festes, name='festa_list'),
+	url(r'^festes/(?P<idFesta>\w+)/$', festa_info, name='festa_detail'),
+	url(r'^festes/(?P<pk>\d+)/delete/$', FestaDelete.as_view(),name='festa_delete'),
+	url(r'^festesLocal/festa/(?P<idFesta>\w+)/$',festa_info),
+	url(r'^festesLocal/(?P<idLocal>\w+)/$',festes_local),
      #Create city
     url(r'^ciutats/create$', CiutatCreate.as_view(),name='ciutat_create'),
 	#Modificar ciutat
-	url(r'^ciutats/(?P<pk>\d+)/edit$', CiutatUpdate.as_view(),name='ciutat_edit'),
-    url(r'^ciutats/$', ciutats),
-	url(r'^ciutats/(?P<idCiutat>\w+)$', ciutat_info,name='ciutat_detail'),
+	url(r'^ciutats/(?P<pk>\d+)/edit/$', CiutatUpdate.as_view(),name='ciutat_edit'),
+    url(r'^ciutats/$', ciutats, name='ciutat_list'),
+	url(r'^ciutats/(?P<idCiutat>\w+)/$', ciutat_info,name='ciutat_detail'),
+	url(r'^ciutats/(?P<pk>\d+)/delete/$', CiutatDelete.as_view(),name='ciutat_delete'),
     
 	
 

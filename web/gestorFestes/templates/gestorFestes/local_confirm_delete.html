@@ -1,25 +1,21 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" 
-    "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
-<head>
-    <title>test</title>
-</head>
-<body>
-    <h1>Sample Delete</h1>
-    {{local.slug}}<br/>
-	{{local.nom}}<br/>
-	
-    {{local.descripcio}}<br/>
-    {{local.carrer}}<br/>
-    {{local.telf}}<br/>
+{% extends "base.html" %}
+{% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+		<ul>
+			<li>
+				<p>Descripcio: {{ local.descripcio }}</p>		
+				<p>Telefon: {{ local.telf }}</p>
+				<p>Email: {{ local.email }}</p>
+				<p>Ciutat: {{ local.ciutat }}</p>
+				<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
+			</li>
+		</ul>
 
-    <p>Are you sure?</p>
+    <p>esta segur de borrar el local i totes les festes d'aquest?</p>
 
     <form action=""
             method="post" accept-charset="utf-8">
             {% csrf_token %}
-        <p><input type="submit" value="Delete &rarr;"></p>
+        <p><input type="submit" value="Eliminar &rarr;"></p>
     </form>
-
-</body>
-</html>
+{% endblock %}

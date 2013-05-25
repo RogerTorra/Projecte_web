@@ -3,14 +3,15 @@
 <div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 		<ul>
 			<li>
-				<p>Descripcio: {{ local.descripcio }}</p>		
-				<p>Telefon: {{ local.telf }}</p>
-				<p>Email: {{ local.email }}</p>
-				<p>Ciutat: {{ local.ciutat }}</p>
+				<p>Titol: {{ festa.titol }}</p>		
+				<p>Descripcio: {{ festa.descripcio }}</p>
+				<p>data: {{ festa.data }}</p>
+				<p>local: {{ festa.local }}</p>
 				<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
 			</li>
+		</ul>
 
-    <p>esta segur de borrar el local i totes les festes d'aquest?</p>
+    <p>esta segur de borrar la festa?</p>
 
     <form action=""
             method="post" accept-charset="utf-8">

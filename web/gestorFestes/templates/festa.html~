@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
 	<div class="pagetitle">
 		<h1>{{festa.titol}}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
 
 	{% if festa %}
+		{% if user.username and festa.user == user  %}
+			<a href="/festes/{{festa.id}}/edit">modificar festa</a>
+			<a href="/festes/{{festa.id}}/delete">Eliminar festes</a>
+		{% endif %}
 		<ul>
 			<li>
 			<p>{{ festa.descripcio}}</p> 
@@ -14,14 +19,6 @@
 			<img src="../../media/{{ festa.imatge }}">
 			</li>
 		</ul>
-		{% if prevLocal %}
-			<p><!--a href="/festesLocal/{{ festa.local.id }}">TORNA A LA LLISTA</a-->
-				<a href="../{{ festa.local.id }}">TORNA A LA LLISTA</a>
-			</p>
-		{% else %}
-			<p><a href="/festes">TORNA A LA LLISTA</a></p>
-		{% endif %}
-		<form><input type="button" value=" Tornar Enrrera " onclick="history.go(-1)" /></form>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+		<ul>
+			<li>
+				<p>Titol: {{ festa.titol }}</p>		
+				<p>Descripcio: {{ festa.descripcio }}</p>
+				<p>data: {{ festa.data }}</p>
+				<p>local: {{ festa.local }}</p>
+			</li>
+		</ul>
+
+	provincia = models.CharField(max_length=25)
+	nom = models.CharField(max_length=25, unique=True, verbose_name="Ciutat")
+	cp = models.IntegerField(verbose_name='Codi Postal')
+	user = models.ForeignKey(User, blank=False)
+
+    <p>esta segur de borrar la festa?</p>
+
+    <form action=""
+            method="post" accept-charset="utf-8">
+            {% csrf_token %}
+        <p><input type="submit" value="Eliminar &rarr;"></p>
+    </form>
+{% endblock %}

@@ -196,6 +196,15 @@ class CiutatCreate(LoginRequiredMixin , CreateView):
 		form.instance.user = self.request.user
 		return super(CiutatCreate,self).form_valid(form)
 
+class CiutatUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Ciutat
+	template_name = 'form.html'
+	form_class = CiutatForm
+
+class CiutatDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
+	model = Ciutat
+	success_url = reverse_lazy('ciutat_list')
+
 class LocalCreate(LoginRequiredMixin , CreateView):
 	model = Local
 	template_name = 'form.html'
@@ -203,6 +212,15 @@ class LocalCreate(LoginRequiredMixin , CreateView):
 	def form_valid(self,form):
 		form.instance.user = self.request.user
 		return super(LocalCreate,self).form_valid(form)
+
+class LocalUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
+	model = Local
+	template_name = 'form.html'
+	form_class = LocalForm
+
+class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
+	model = Local
+	success_url = reverse_lazy('local_list')
 
 class FestaCreate(LoginRequiredMixin , CreateView):
 	
@@ -214,24 +232,21 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 		form.instance.user = self.request.user
 		return super(FestaCreate,self).form_valid(form)
 
-class LocalUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
-	model = Local
-	template_name = 'form.html'
-	form_class = LocalForm
-
-class CiutatUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
-	model = Ciutat
-	template_name = 'form.html'
-	form_class = CiutatForm
-
 class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 	model = Festa
 	template_name = 'form.html'
 	form_class = FestaForm
 
-class LocalDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
-	model = Local
-	success_url = reverse_lazy('local_list')
+class FestaDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
+	model = Festa
+	success_url = reverse_lazy('festa_list')
+
+
+
+
+
+
+
 
 
 ### RESTful API ###

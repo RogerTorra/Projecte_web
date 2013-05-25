@@ -5,7 +5,7 @@
 		<h1>{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
-	{% if user.username and ciutat.user == user  %}<a href="/ciutat/{{ciutat.id}}/edit">modificar ciutat</a>{% endif %}
+	{% if user.username and ciutat.user == user  %}<a href="/ciutats/{{ciutat.id}}/edit">modificar ciutat</a>{% endif %}
 	{% if ciutat %}
 	
 		<ul>
