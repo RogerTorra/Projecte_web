@@ -3,6 +3,7 @@
 {% block content %}
 <script type="text/javascript">
 	$(function() {
+		$( "#id_data" ).datepicker();
 		$.getJSON("{% static "provincies.json" %}", function(provincies){
 			$("#id_provincia").autocomplete({source: provincies});
 		});

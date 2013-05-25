@@ -62,7 +62,7 @@ class Local(models.Model):
 class Festa(models.Model):
 	titol = models.CharField(max_length=25, unique=True)
 	descripcio = models.TextField(max_length=200)
-	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge', null = True)
+	imatge = models.ImageField(upload_to='imatgesFesta', verbose_name='Imatge', null = True, blank= True)
 	data = models.DateField()
 	local = models.ForeignKey(Local)
 	user = models.ForeignKey(User, blank=False)
