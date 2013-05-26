@@ -150,10 +150,8 @@ def festes_local(request,idLocal):
 	return render(request,"festesLocal.html",variables)
 
 
+# Forms #
 
-
-
-#Forms
 from forms import CiutatForm, LocalForm, FestaForm
 from  django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required

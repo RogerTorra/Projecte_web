@@ -212,7 +212,6 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 	template_name = 'form.html'
 	form_class = FestaForm
 
-# Activan aquesta funcio nomes et mostra els locals que ha creat l'usuari, pero llavors no carrega be la imatge	
 #	def get_form(self, form_class):
 #		return form_class(
 #			locals_user=Local.objects.filter(user=self.request.user.id)

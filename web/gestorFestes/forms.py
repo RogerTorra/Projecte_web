@@ -17,7 +17,6 @@ class LocalForm(ModelForm):
 
 class FestaForm(ModelForm):
 
-# Activan aquesta funcio nomes et mostra els locals que ha creat l'usuari, pero llavors no carrega la imatge
 #	def __init__(self, *args, **kwargs):
 #		locals_user = kwargs.pop('locals_user', None)
 #		super(FestaForm, self).__init__(*args, **kwargs)
