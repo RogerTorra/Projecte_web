@@ -35,6 +35,7 @@ signals.post_syncdb.connect(create_testuser,
     sender=auth_models, dispatch_uid='common.models.create_testuser')
 
 # Create your models here.
+
 class Ciutat(models.Model):
 	provincia = models.CharField(max_length=25)
 	nom = models.CharField(max_length=25, unique=True, verbose_name="Ciutat")
@@ -71,7 +72,4 @@ class Festa(models.Model):
 	def get_absolute_url(self):
 		return reverse('festa_detail', kwargs={'idFesta': self.id})
 
-class LocalFesta(models.Model):
-	local = models.ForeignKey(Local)
-	festa = models.ForeignKey(Festa)
 
