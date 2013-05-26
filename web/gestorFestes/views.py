@@ -228,10 +228,14 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 	template_name = 'form.html'
 	form_class = FestaForm
 
+# Activan aquesta funcio nomes et mostra els locals que ha creat l'usuari, pero llavors no carrega la imatge	
+#	def get_form(self, form_class):
+#		return form_class(
+#			locals_user=Local.objects.filter(user=self.request.user.id)
+#	)
+
 	def form_valid(self,form):
-#		form = FestaForm(user=self.request.user.username)
 		form.instance.user = self.request.user
-		#form.instance.local = Local.objects.get(user=self.request.user)
 		return super(FestaCreate,self).form_valid(form)
 
 class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
