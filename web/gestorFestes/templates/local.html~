@@ -1,8 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+
+<span vocab="http://schema.org/" typeof="EntertainmentBusiness">
+	
 	<div class="pagetitle">
-		<h1>{{ pagetitle }}</h1>
+		<h1 property="name">{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
 		
@@ -14,35 +17,60 @@
 		{% endif %}
 	<ul>
 		<li>
-		<p>Descripcio: {{ local.descripcio }}</p>		
-		<p>Telefon: {{ local.telf }}</p>
-		<p>Email: {{ local.email }}</p>
-		<p>Ciutat: {{ local.ciutat }}</p>
-		<p>Carrer: {{ local.carrer }}</p> <!-- aixo es clau forana -->
-		<p><a class="linkFesta" href="/festesLocal/{{local.id}}"> <i class="icon-thumbs-up"></i> Veure festes</a></p>
+			<p>Descripcio: <span property="description">{{ local.descripcio }}</span></p>		
+			<p>Telefon: <span property="telephone">{{ local.telf }}</span></p>
+			<p>Email: <span property="email">{{ local.email }}</span></p>
+			<span rel="address">
+				<span typeof="PostalAddress">
+					<p>Ciutat: <span property="addressLocality">{{ local.ciutat }}</span></p>
+					<p>Carrer: <span property="streetAddress">{{ local.carrer }}</span></p> 
+				</span>
+			</span>
+			<p><a class="linkFesta" href="/festesLocal/{{local.id}}"> <i class="icon-thumbs-up"></i> Veure festes</a></p>
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>
 	</ul>
 
 	<h1><br>Reviews</br></h1>
-	<ul>
+	<h2>Reviews</h2>
+
+	{% if local.localreview_set.all|length > 0 %}
+	<span rel="aggregateRating">
+		<p typeof="AggregateRating">
+			Average	rating	
+			<span	property="ratingValue">{{ local.averageRating|stringformat:".1f" }}</span>
+			{%	with local.localreview_set.all|length as reviewCount %}
+				from <span property="reviewCount">{{ reviewCount }}</span>
+				review{{ reviewCount|pluralize }}
+			{%	endwith	%}
+		</p>
+	</span>
+	<ul rel="review">
 		{% for review in local.localreview_set.all %}
-		    <li>
-		        <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
-		        <p>{{ review.comment }}</p>
-		        <p>Created by {{ review.user }} on {{ review.date }}</p>
+		    <li typeof="Review">
+				<p rel="reviewRating" typeof="Rating">
+				<span property="worstRating" content="{{ RATING_CHOICES.0.0	}}"></span>
+				<span property="ratingValue">{{ review.rating }}</span>
+				star{{ review.rating|pluralize }}
+				{% with RATING_CHOICES|last	as best %}
+					<span property="bestRating"	content="{{ best.0 }}"></span>
+				{% endwith %}
+		        <p property="description">{{ review.comment }}</p>
+		        <p>Created by <span property="author">{{ review.user }}</span> 
+					on <span property="date">{{ review.date }}</span>
+				</p>
 		    </li>
 		{% endfor %}
 	</ul>
+
+</span>
+	{% endif %}
 
 	<h3>Add Review</h3>
 	<form action="../../locals/{{local.id}}/reviews/create/" method="post">
 		{% csrf_token %}
 		Message: <textarea name="comment" id="comment" rows="4"></textarea>
 		<p>Rating:</p>
-		{% if local.RATING_CHOICES %}
-			<p>fokaaaa</p>
-		{% endif %}
 		<p>
 		{% for rate in RATING_CHOICES %}
 		    <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
