@@ -8,7 +8,10 @@
 		
 	{% if local %}
 
-		{% if user.username and local.user == user  %}<a href="/locals/{{local.id}}/edit">modificar local</a>{% endif %}
+		{% if user.username and local.user == user  %}
+			<a href="/locals/{{local.id}}/edit">modificar local</a>
+			<a href="/locals/{{local.id}}/delete">Eliminar local</a>
+		{% endif %}
 	<ul>
 		<li>
 		<p>Descripcio: {{ local.descripcio }}</p>		
@@ -20,6 +23,34 @@
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>
 	</ul>
+
+	<h1><br>Reviews</br></h1>
+	<ul>
+		{% for review in local.localreview_set.all %}
+		    <li>
+		        <p>{{ review.rating }} star{{ review.rating|pluralize }}</p>
+		        <p>{{ review.comment }}</p>
+		        <p>Created by {{ review.user }} on {{ review.date }}</p>
+		    </li>
+		{% endfor %}
+	</ul>
+
+	<h3>Add Review</h3>
+	<form action="../../locals/{{local.id}}/reviews/create/" method="post">
+		{% csrf_token %}
+		Message: <textarea name="comment" id="comment" rows="4"></textarea>
+		<p>Rating:</p>
+		<p>
+		{% for rate in RATING_CHOICES %}
+		    <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
+		    <label for="choice{{ forloop.counter }}">{{ rate.1 }} star{{ rate.0|pluralize }}</label><br />
+		{% endfor %}
+		</p>
+		<input type="submit" value="Review" />
+	</form>
+
+
+
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

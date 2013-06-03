@@ -34,10 +34,8 @@ urlpatterns = patterns('',
 	# Mostrar detall festa
 	url(r'^festes/(?P<idFesta>\w+)/$', festa_info, name='festa_detail'),
 
-	
-
 	# Modificar Festa
-	url(r'^festes/(?P<pk>\d+)/edit/$', LocalUpdate.as_view(),name='festa_edit'),
+	url(r'^festes/(?P<pk>\d+)/edit/$', FestaUpdate.as_view(),name='festa_edit'),
 
     # Borrar Festa
 	url(r'^festes/(?P<pk>\d+)/delete/$', FestaDelete.as_view(),name='festa_delete'),
@@ -79,6 +77,11 @@ urlpatterns = patterns('',
 
 	# Llsita Locals	
 	url(r'^locals/$',locals_view, name='local_lis'),
+
+	# ex: /myrestaurants/restaurants/1/reviews/create/
+    url(r'^locals/(?P<pk>\d+)/reviews/create/$',
+        review,
+        name='review_create'),
 
 
     url(r'^login/$', 'django.contrib.auth.views.login'),

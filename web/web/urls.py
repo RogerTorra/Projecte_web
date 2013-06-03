@@ -78,6 +78,9 @@ urlpatterns = patterns('',
 	# Llsita Locals	
 	url(r'^locals/$',locals_view, name='local_lis'),
 
+	# Crear review
+	url(r'^locals/(?P<pk>\d+)/reviews/create/$', review, name='review_create'),
+
 
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout',

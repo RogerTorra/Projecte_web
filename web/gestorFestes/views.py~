@@ -3,10 +3,11 @@ from django.http import HttpResponse, Http404
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
-from gestorFestes.models import Festa,Ciutat,Local
+from gestorFestes.models import Festa,Ciutat,Local,
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import get_object_or_404
 
 def festes(request): 
 	try:
@@ -153,7 +154,7 @@ def festes_local(request,idLocal):
 # Forms #
 
 from forms import CiutatForm, LocalForm, FestaForm
-from  django.views.generic.edit import CreateView, UpdateView, DeleteView
+from  django.views.generic.edit import CreateView, UpdateView, DeleteView, LocalReview
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
 from django.core.exceptions import PermissionDenied
@@ -212,7 +213,6 @@ class FestaCreate(LoginRequiredMixin , CreateView):
 	template_name = 'form.html'
 	form_class = FestaForm
 
-# Activan aquesta funcio nomes et mostra els locals que ha creat l'usuari, pero llavors no carrega be la imatge	
 #	def get_form(self, form_class):
 #		return form_class(
 #			locals_user=Local.objects.filter(user=self.request.user.id)
@@ -230,6 +230,17 @@ class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 class FestaDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 	model = Festa
 	success_url = reverse_lazy('festa_lis')
+
+@login_required()
+def review(request, pk):
+	local = get_object_or_404(Local, pk=pk)
+	review = LocalReview(rating=request.POST['rating'],
+		comment=request.POST['comment'],
+		user=request.user,
+		local=local)
+	review.save()
+	return HttpResponseRedirect(urlresolvers.reverse('local_detail', args=(local.id,)))
+
 
 
 # RESTful API #

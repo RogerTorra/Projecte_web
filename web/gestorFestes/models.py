@@ -6,6 +6,7 @@ from django.contrib.auth import models as auth_models
 from django.contrib.auth.management import create_superuser
 from django.db.models import signals
 from django.conf import settings
+from datetime import date
 
 # Prevent interactive question about wanting a superuser created.  (This code
 # has to go in this otherwise empty "models" module so that it gets processed by
@@ -72,4 +73,16 @@ class Festa(models.Model):
 	def get_absolute_url(self):
 		return reverse('festa_detail', kwargs={'idFesta': self.id})
 
+class Review(models.Model):
+	RATING_CHOICES = ((1,'1'),(2,'2'),(3,'3'),(4,'4'),(5,'5'))
+	rating = models.PositiveSmallIntegerField('Ratings (stars)', blank=False, default=3, choices=RATING_CHOICES)
+	comment = models.TextField(blank=True, null=True)
+	user = models.ForeignKey(User, blank=False)
+	date = models.DateField(default=date.today)
+
+	#class Meta:
+	#	abstract = True
+
+class LocalReview(Review):
+	local = models.ForeignKey(Local)
 

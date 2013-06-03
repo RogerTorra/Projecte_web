@@ -3,10 +3,11 @@ from django.http import HttpResponse, Http404
 from django.template import Context
 from django.template.loader import get_template
 from django.contrib.auth.models import User
-from gestorFestes.models import Festa,Ciutat,Local
+from gestorFestes.models import Festa,Ciutat,Local,LocalReview
 from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
+from django.shortcuts import get_object_or_404
 
 def festes(request): 
 	try:
@@ -229,6 +230,17 @@ class FestaUpdate(LoginRequiredMixin, CheckIsOwnerMixin, UpdateView):
 class FestaDelete(LoginRequiredMixin, CheckIsOwnerMixin,DeleteView):
 	model = Festa
 	success_url = reverse_lazy('festa_lis')
+
+@login_required()
+def review(request, pk):
+	local = get_object_or_404(Local, pk=pk)
+	review = LocalReview(rating=request.POST['rating'],
+		comment=request.POST['comment'],
+		user=request.user,
+		local=local)
+	review.save()
+	return HttpResponseRedirect(urlresolvers.reverse('local_detail', args=(local.id,)))
+
 
 
 # RESTful API #
