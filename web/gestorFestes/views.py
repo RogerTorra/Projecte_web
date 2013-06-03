@@ -8,6 +8,8 @@ from django.shortcuts import render, render_to_response
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import get_object_or_404
+from django.http import HttpResponseRedirect
+from django.core import urlresolvers
 
 def festes(request): 
 	try:
@@ -106,13 +108,14 @@ def locals_info(request,idLocal):
 		local = Local.objects.get(pk=idLocal)
 		festes = Festa.objects.filter(local=idLocal)
 	except Exception:
-		raise Http404('Ciutats not found.')
+		raise Http404('Local not found.')
 	
 	variables = Context({
 		'local': local,	
         'titlehead': 'Gestor de Festes',
 		'pagetitle': local.nom,
 		'festes' : festes,
+		'RATING_CHOICES' : LocalReview.RATING_CHOICES,
 	})
 
 	return render(request,"local.html",variables)

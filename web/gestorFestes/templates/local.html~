@@ -40,6 +40,9 @@
 		{% csrf_token %}
 		Message: <textarea name="comment" id="comment" rows="4"></textarea>
 		<p>Rating:</p>
+		{% if local.RATING_CHOICES %}
+			<p>fokaaaa</p>
+		{% endif %}
 		<p>
 		{% for rate in RATING_CHOICES %}
 		    <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />
