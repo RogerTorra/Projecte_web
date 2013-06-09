@@ -26,7 +26,9 @@
 					<p>Carrer: <span property="streetAddress">{{ local.carrer }}</span></p> 
 				</span>
 			</span>
-			<p><a class="linkFesta" href="/festesLocal/{{local.id}}"> <i class="icon-thumbs-up"></i> Veure festes</a></p>
+			<span typeof="MusicEvent">
+				<p><a property="url" class="linkFesta" href="/festesLocal/{{local.id}}"> <i class="icon-thumbs-up"></i> Veure festes</a></p>
+			</span>
 		<!-- si volem fikar imatge... <img src="../../media/{{ local.imatge }}">-->
 		</li>
 	</ul>
@@ -37,10 +39,10 @@
 	{% if local.localreview_set.all|length > 0 %}
 	<span rel="aggregateRating">
 		<p typeof="AggregateRating">
-			Average	rating	
+			Mitjana del ratio	
 			<span	property="ratingValue">{{ local.averageRating|stringformat:".1f" }}</span>
 			{%	with local.localreview_set.all|length as reviewCount %}
-				from <span property="reviewCount">{{ reviewCount }}</span>
+				desde <span property="reviewCount">{{ reviewCount }}</span>
 				review{{ reviewCount|pluralize }}
 			{%	endwith	%}
 		</p>
@@ -56,7 +58,7 @@
 					<span property="bestRating"	content="{{ best.0 }}"></span>
 				{% endwith %}
 		        <p property="description">{{ review.comment }}</p>
-		        <p>Created by <span property="author">{{ review.user }}</span> 
+		        <p>Creat per <span property="author">{{ review.user }}</span> 
 					on <span property="publishDate">{{ review.date }}</span>
 				</p>
 		    </li>
@@ -69,8 +71,8 @@
 	<h3>Add Review</h3>
 	<form action="../../locals/{{local.id}}/reviews/create/" method="post">
 		{% csrf_token %}
-		Message: <textarea name="comment" id="comment" rows="4"></textarea>
-		<p>Rating:</p>
+		Missatge: <textarea name="comment" id="comment" rows="4"></textarea>
+		<p>Ratio:</p>
 		<p>
 		{% for rate in RATING_CHOICES %}
 		    <input type="radio" name="rating" id="rating{{ forloop.counter }}" value="{{ rate.1 }}" />

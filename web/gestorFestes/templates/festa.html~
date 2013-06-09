@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+<span vocab="http://schema.org/" typeof="MusicEvent">
 	<div class="pagetitle">
-		<h1>{{festa.titol}}</h1>
+		<h1 property="name" >{{festa.titol}}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
 
@@ -13,12 +14,15 @@
 		{% endif %}
 		<ul>
 			<li>
-			<p>{{ festa.descripcio}}</p> 
-			<p>{{ festa.local.nom}}</p>
-			<p>Data: {{ festa.data }}</p>
-			<img src="../../media/{{ festa.imatge }}">
+			<p>Descripcio: <span property="description">{{ festa.descripcio}}</span></p> 
+			<span typeof="LocalBussines">
+				<p>Local: <span property="name">{{ festa.local.nom}}</p>
+			</span>
+			<p>Data: <span property="startDate">{{ festa.data }}</span></p>
+			<span property="image"><img src="../../media/{{ festa.imatge }}"></span>
 			</li>
 		</ul>
+</span>
 	{% else %}
 	<p>No Party</p>
 	{% endif %}

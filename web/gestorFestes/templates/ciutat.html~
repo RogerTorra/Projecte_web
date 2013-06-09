@@ -1,17 +1,22 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="backButton" onclick="history.go(-1)" /><i class="icon-arrow-left"></i>Back</div>
+<span vocab="http://schema.org/" typeof="PostalAddress">
 	<div class="pagetitle">
-		<h1>{{ pagetitle }}</h1>
+		<h1 property="name">{{ pagetitle }}</h1>
 		<p>{{ contentbody }}</p>
 	</div>
-	{% if user.username and ciutat.user == user  %}<a href="/ciutats/{{ciutat.id}}/edit">modificar ciutat</a>{% endif %}
+	
 	{% if ciutat %}
+		{% if user.username and ciutat.user == user  %}
+			<a href="/ciutats/{{ciutat.id}}/edit">modificar ciutat</a>
+			<a href="/ciutats/{{ciutat.id}}/delete">eliminar ciutat</a>
+		{% endif %}
 	
 		<ul>
 			<li>	
-				<p>Provincia: {{ ciutat.provincia }}</p>
-				<p>Codi Postal: {{ ciutat.cp }}</p>
+				<p>Provincia: <span property="addressRegion">{{ ciutat.provincia }}</span></p>
+				<p>Codi Postal: <span property="postalCode">{{ ciutat.cp }}</span></p>
 			</li>
 		</ul>
 		<form><input type="button" value=" Tornar Enrrera " onclick="history.go(-1)" /></form>
