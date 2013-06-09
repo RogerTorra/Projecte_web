@@ -42,7 +42,7 @@
 			Mitjana del ratio	
 			<span	property="ratingValue">{{ local.averageRating|stringformat:".1f" }}</span>
 			{%	with local.localreview_set.all|length as reviewCount %}
-				desde <span property="reviewCount">{{ reviewCount }}</span>
+				de <span property="reviewCount">{{ reviewCount }}</span>
 				review{{ reviewCount|pluralize }}
 			{%	endwith	%}
 		</p>

@@ -15,11 +15,11 @@
 		<ul>
 			<li>
 			<p>Descripcio: <span property="description">{{ festa.descripcio}}</span></p> 
-			<span typeof="LocalBussines">
+			<span typeof="EntertainmentBussines">
 				<p>Local: <span property="name">{{ festa.local.nom}}</p>
 			</span>
 			<p>Data: <span property="startDate">{{ festa.data }}</span></p>
-			<span property="image"><img src="../../media/{{ festa.imatge }}"></span>
+			<span property="image" content="{{ festa.imatge }}"><img src="../../media/{{ festa.imatge }}"></span>
 			</li>
 		</ul>
 </span>
